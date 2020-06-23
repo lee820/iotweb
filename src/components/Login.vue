@@ -70,7 +70,6 @@ export default {
             'Content-Type': 'application/x-www-form-urlencoded'
           }
         }).then((res) => {
-          console.log(res)
           // 1. 将登录成功后的token，保存到客户端的sessionStorage中
           window.sessionStorage.setItem('token', res.data.data.token)
           this.$message.success('登录成功')
