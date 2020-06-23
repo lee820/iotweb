@@ -23,8 +23,8 @@ export default {
   data () {
     return {
       LoginForm: {
-        username: 'lee123',
-        password: '123456'
+        username: 'yang',
+        password: '112233'
       },
       rules: {
         username: [
@@ -48,15 +48,40 @@ export default {
           this.$message.error('登录失败')
           return
         }
-        const result = this.$http.post('login', this.LoginForm)
-        console.log(result)
-        this.$message.success('登录成功')
+        // this.$http.post('/api/auth/login', this.LoginForm).then(function (response) {
+        //   console.log(response)
+        // })
+        // axios使用form表单提交数据
+        this.$http({
+          method: 'post',
+          url: '/api/auth/login',
+          data: this.LoginForm,
+          transformRequest: [function (data) {
+            let ret = ''
+            // ret = Qs.stringify(data);
+            // 不使用插件
+            for (const it in data) {
+              // ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&';
+              ret += it + '=' + data[it] + '&'
+            }
+            return ret
+          }],
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }).then((res) => {
+          console.log(res)
+          // 1. 将登录成功后的token，保存到客户端的sessionStorage中
+          window.sessionStorage.setItem('token', res.data.data.token)
+          this.$message.success('登录成功')
+          this.$router.push('/home')
+        })
         // 1. 将登录成功后的token，保存到客户端的sessionStorage中
         //  1.1 项目除了登录之外的接口，都必须登录才能访问
         //  1.2 token只在当前网站打开期间生效 sessionStorage打开生效。localsession场景存储
-        window.sessionStorage.setItem('token', result.data.token)
+        // window.sessionStorage.setItem('token', result.data.token)
         // 2. 通过编程式导航跳转home
-        // this.$router.pusho('/home')
+        // this.$router.push('/home')
       })
     }
   }
