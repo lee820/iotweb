@@ -75,6 +75,8 @@ export default {
           this.$message.success('登录成功')
           this.$router.push('/home')
         })
+        // 后期需要删除
+        this.$router.push('/home')
         // 1. 将登录成功后的token，保存到客户端的sessionStorage中
         //  1.1 项目除了登录之外的接口，都必须登录才能访问
         //  1.2 token只在当前网站打开期间生效 sessionStorage打开生效。localsession场景存储
