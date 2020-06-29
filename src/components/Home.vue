@@ -6,7 +6,20 @@
                 <!-- <img src="../assets/logo.png" alt=""> -->
                 <span>物联网操作系统</span>
             </div>
-            <el-button type="info" @click="LogOut">退出</el-button>
+            <!-- 用户信息展示区域 -->
+            <div class="user-info">
+                <el-avatar icon="el-icon-user-solid"></el-avatar>
+                <el-dropdown>
+                    <span class="el-dropdown-link">
+                        用户lee<i class="el-icon-arrow-down el-icon--right"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>用户中心</el-dropdown-item>
+                        <el-dropdown-item>待开发</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+                <el-button type="info" @click="LogOut">退出</el-button>
+            </div>
         </el-header>
         <!-- 主体区域 -->
         <el-container>
@@ -20,13 +33,13 @@
                         <!-- 一级菜单的模板 -->
                         <template slot="title">
                         <i class="el-icon-location"></i>
-                        <span>导航一</span>
+                        <span>概览</span>
                         </template>
                         <!-- 二级菜单 -->
-                        <el-menu-item index="1-2">
+                        <!-- <el-menu-item index="1-2">
                             <i class="el-icon-menu"></i>
                             <span slot="title">选项二</span>
-                        </el-menu-item>
+                        </el-menu-item> -->
                     </el-submenu>
                 </el-menu>
             </el-aside>
@@ -73,6 +86,7 @@ export default {
     align-items: center;
     color: #ffffff;
     font-size: 20px;
+    text-align: right;
 }
 
 .el-aside {
@@ -95,5 +109,26 @@ export default {
     text-align: center;
     letter-spacing: 2px;
     cursor: pointer;
+}
+
+.el-header .user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.el-header .user-info .el-avatar {
+    margin: 10px;
+}
+
+.el-header .user-info > .el-button {
+    margin: 10px;
+    padding: 10px;
+}
+
+.el-dropdown-link {
+    cursor: pointer;
+    color: #409eff;
 }
 </style>
