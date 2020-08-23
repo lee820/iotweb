@@ -33,7 +33,7 @@
                         <!-- 一级菜单的模板 -->
                         <template slot="title">
                         <i class="el-icon-location"></i>
-                        <span>概览</span>
+                        <span>首页</span>
                         </template>
                         <!-- 二级菜单 -->
                         <!-- <el-menu-item index="1-2">
@@ -129,6 +129,6 @@ export default {
 
 .el-dropdown-link {
     cursor: pointer;
-    color: #409eff;
+    color: #ffffff;
 }
 </style>
