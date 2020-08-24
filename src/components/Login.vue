@@ -43,6 +43,8 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     login () {
+      this.$router.push('/home')
+      /*
       this.$refs.loginFormRef.validate((valid) => {
         if (!valid) {
           this.$message.error('登录失败')
@@ -84,6 +86,7 @@ export default {
         // 2. 通过编程式导航跳转home
         // this.$router.push('/home')
       })
+      */
     }
   }
 }

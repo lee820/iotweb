@@ -28,8 +28,8 @@ router.beforeEach((to, from, next) => {
   // next是个函数，表示跳转
   if (to.path === '/login') { return next() }
   // 获取token
-  const tokenStr = window.sessionStorage.getItem('token')
-  if (!tokenStr) { return next('/login') }
+  // const tokenStr = window.sessionStorage.getItem('token')
+  // if (!tokenStr) { return next('/login') }
   next()
 })
 
