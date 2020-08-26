@@ -36,7 +36,16 @@
                     prop="running"
                     label="运行状态">
                 </el-table-column>
-                </el-table>
+            </el-table>
+            <!-- 分页数量显示 -->
+            <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page.sync="page"
+                :page-size="pagesize"
+                layout="total, prev, pager, next"
+                :total="totalPage">
+            </el-pagination>
         </el-card>
     </div>
 </template>
@@ -47,20 +56,24 @@ export default {
     return {
       deviceTablaData: [],
       page: 1,
-      pagesize: 5
+      pagesize: 5,
+      totalPage: 0
     }
   },
   created () {
-    this.GetDeviceList()
+    this.GetDeviceList(1, 5)
   },
   methods: {
-    GetDeviceList () {
+    /*
+    * 获取设备信息列表
+    */
+    GetDeviceList (page, pagesize) {
       this.$http({
         method: 'get',
         url: '/api/v1/device/1',
         params: {
-          page: this.page,
-          pagesize: this.pagesize
+          page: page,
+          pagesize: pagesize
         },
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -76,9 +89,24 @@ export default {
             running: res.data.list[i].running
           })
         }
+        this.totalPage = res.data.pager.total_rows
       }).catch(error => {
         console.log(error)
       })
+    },
+    /*
+     * 分页显示大小改变
+     */
+    handleSizeChange (val) {
+      console.log(`每页 ${val} 条`)
+    },
+
+    /*
+     * 当前分页改变
+     */
+    handleCurrentChange (val) {
+      console.log(`当前页: ${val}`)
+      this.GetDeviceList(val, this.pagesize)
     }
   }
 }

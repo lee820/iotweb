@@ -22,7 +22,8 @@ import {
   DropdownItem,
   DropdownMenu,
   Table,
-  TableColumn
+  TableColumn,
+  Pagination
 } from 'element-ui'
 
 Vue.use(Button)
@@ -47,5 +48,6 @@ Vue.use(DropdownItem)
 Vue.use(DropdownMenu)
 Vue.use(Table)
 Vue.use(TableColumn)
+Vue.use(Pagination)
 // 全局挂载在Vue的原型链
 Vue.prototype.$message = Message
