@@ -20,7 +20,9 @@ import {
   Avatar,
   Dropdown,
   DropdownItem,
-  DropdownMenu
+  DropdownMenu,
+  Table,
+  TableColumn
 } from 'element-ui'
 
 Vue.use(Button)
@@ -43,5 +45,7 @@ Vue.use(Avatar)
 Vue.use(Dropdown)
 Vue.use(DropdownItem)
 Vue.use(DropdownMenu)
+Vue.use(Table)
+Vue.use(TableColumn)
 // 全局挂载在Vue的原型链
 Vue.prototype.$message = Message

@@ -23,7 +23,7 @@ export default {
   data () {
     return {
       LoginForm: {
-        username: 'yang',
+        username: 'lee',
         password: '112233'
       },
       rules: {
@@ -43,28 +43,20 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     login () {
-      this.$router.push('/home')
-      /*
       this.$refs.loginFormRef.validate((valid) => {
         if (!valid) {
           this.$message.error('登录失败')
           return
         }
-        // this.$http.post('/api/auth/login', this.LoginForm).then(function (response) {
-        //   console.log(response)
-        // })
         // axios使用form表单提交数据
         this.$http({
           method: 'post',
-          url: '/api/auth/login',
+          url: '/auth',
           data: this.LoginForm,
           transformRequest: [function (data) {
             let ret = ''
-            // ret = Qs.stringify(data);
-            // 不使用插件
             for (const it in data) {
-              // ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&';
-              ret += it + '=' + data[it] + '&'
+              ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
             }
             return ret
           }],
@@ -73,20 +65,14 @@ export default {
           }
         }).then((res) => {
           // 1. 将登录成功后的token，保存到客户端的sessionStorage中
-          window.sessionStorage.setItem('token', res.data.data.token)
+          console.log(res)
+          window.sessionStorage.setItem('token', res.data.Data)
           this.$message.success('登录成功')
           this.$router.push('/home')
+        }).catch(error => {
+          console.log(error)
         })
-        // 后期需要删除
-        this.$router.push('/home')
-        // 1. 将登录成功后的token，保存到客户端的sessionStorage中
-        //  1.1 项目除了登录之外的接口，都必须登录才能访问
-        //  1.2 token只在当前网站打开期间生效 sessionStorage打开生效。localsession场景存储
-        // window.sessionStorage.setItem('token', result.data.token)
-        // 2. 通过编程式导航跳转home
-        // this.$router.push('/home')
       })
-      */
     }
   }
 }
