@@ -27,19 +27,54 @@
             <el-aside :width="isCollaps ? '64px' : '200px'">
                 <div class="hide-aside" @click="toggleAside">|||</div>
                 <el-menu background-color="#333744" text-color="#ffffff" active-text-color="#409fff"
-                :collapse="isCollaps" :collapse-transition="false" :router="true">
+                :collapse="isCollaps" :collapse-transition="false" :router="true" :unique-opened="true">
                     <!-- 一级菜单 -->
-                    <el-submenu index="1">
+                    <el-submenu index="Home">
                         <!-- 一级菜单的模板 -->
                         <template slot="title">
                         <i class="el-icon-location"></i>
                         <span>首页</span>
                         </template>
+                    </el-submenu>
+                    <el-submenu index="2">
+                        <!-- 一级菜单的模板 -->
+                        <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span>设备管理</span>
+                        </template>
                         <!-- 二级菜单 -->
-                        <!-- <el-menu-item index="1-2">
+                        <el-menu-item index="2-1">
                             <i class="el-icon-menu"></i>
-                            <span slot="title">选项二</span>
-                        </el-menu-item> -->
+                            <span slot="title">概览</span>
+                        </el-menu-item>
+                        <el-menu-item index="2-2">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">添加设备</span>
+                        </el-menu-item>
+                        <el-menu-item index="2-3">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">修改设备</span>
+                        </el-menu-item>
+                        <el-menu-item index="2-4">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">查看设备</span>
+                        </el-menu-item>
+                    </el-submenu>
+                    <el-submenu index="3">
+                        <!-- 一级菜单的模板 -->
+                        <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span>报警监控</span>
+                        </template>
+                        <!-- 二级菜单 -->
+                        <el-menu-item index="2-1">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">概览</span>
+                        </el-menu-item>
+                        <el-menu-item index="2-2">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">实时查看</span>
+                        </el-menu-item>
                     </el-submenu>
                 </el-menu>
             </el-aside>

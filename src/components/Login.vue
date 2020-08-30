@@ -43,6 +43,8 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     login () {
+      this.$router.push('/home')
+      /*
       this.$refs.loginFormRef.validate((valid) => {
         if (!valid) {
           this.$message.error('登录失败')
@@ -72,7 +74,7 @@ export default {
         }).catch(error => {
           console.log(error)
         })
-      })
+      }) */
     }
   }
 }
